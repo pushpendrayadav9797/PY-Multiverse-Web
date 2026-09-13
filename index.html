@@ -1,13 +1,449 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
   <title>PY Multiverse</title>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #111;
+      padding-bottom: 30px;
+    }
+
+    /* HEADER */
+
+    .header {
+      background: linear-gradient(135deg, #111827, #2563eb);
+      color: white;
+      padding: 25px 20px 35px;
+      border-radius: 0 0 25px 25px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: white;
+      color: #2563eb;
+      border-radius: 15px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+    }
+
+    .logo p {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 3px;
+    }
+
+    .welcome {
+      margin-top: 25px;
+    }
+
+    .welcome h2 {
+      font-size: 22px;
+    }
+
+    .welcome p {
+      margin-top: 7px;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      margin: 20px;
+      background: white;
+      padding: 13px;
+      border-radius: 15px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 15px;
+    }
+
+    /* SECTION */
+
+    .section {
+      padding: 0 20px;
+      margin-top: 25px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      font-size: 19px;
+    }
+
+    .section-title span {
+      font-size: 13px;
+      color: #2563eb;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+    .card:active {
+      transform: scale(0.97);
+    }
+
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    /* FEATURED */
+
+    .featured-card {
+      background: white;
+
+      padding: 18px;
+
+      border-radius: 18px;
+
+      margin-bottom: 15px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .file-icon {
+      width: 45px;
+      height: 45px;
+
+      background: #eaf0ff;
+
+      border-radius: 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 22px;
+    }
+
+    .file-info h3 {
+      font-size: 15px;
+    }
+
+    .file-info p {
+      font-size: 12px;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .open-btn {
+      background: #2563eb;
+
+      color: white;
+
+      border: none;
+
+      padding: 9px 14px;
+
+      border-radius: 10px;
+
+      font-size: 13px;
+
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      text-align: center;
+
+      margin-top: 30px;
+
+      font-size: 12px;
+
+      color: #777;
+    }
+
+  </style>
 </head>
+
 <body>
-  <h1>📚 PY Multiverse</h1>
-  <p>Free Study Materials, Notes, PDFs & Question Banks</p>
-  <button>Explore Materials</button>
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div class="logo">
+
+      <div class="logo-icon">
+        PY
+      </div>
+
+      <div>
+        <h1>PY Multiverse</h1>
+
+        <p>Your Study Universe</p>
+      </div>
+
+    </div>
+
+    <div class="welcome">
+
+      <h2>Welcome to PY Multiverse 📚</h2>
+
+      <p>
+        Explore free study materials, notes,
+        question banks and much more.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- SEARCH -->
+
+  <div class="search-box">
+
+    🔍
+
+    <input
+      type="text"
+      placeholder="Search study materials..."
+    >
+
+  </div>
+
+
+  <!-- CATEGORIES -->
+
+  <div class="section">
+
+    <div class="section-title">
+
+      <h2>Categories</h2>
+
+      <span>View All</span>
+
+    </div>
+
+
+    <div class="categories">
+
+      <div class="card">
+
+        <div class="card-icon">📚</div>
+
+        <h3>Study Notes</h3>
+
+        <p>Chapter-wise notes</p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">📄</div>
+
+        <h3>PDF Books</h3>
+
+        <p>Free books & PDFs</p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">❓</div>
+
+        <h3>Question Banks</h3>
+
+        <p>Practice questions</p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">🎯</div>
+
+        <h3>Sample Papers</h3>
+
+        <p>Board preparation</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FEATURED -->
+
+  <div class="section">
+
+    <div class="section-title">
+
+      <h2>Featured Materials</h2>
+
+      <span>See More</span>
+
+    </div>
+
+
+    <div class="featured-card">
+
+      <div class="file-info">
+
+        <div class="file-icon">
+          📘
+        </div>
+
+        <div>
+
+          <h3>Class 10 Study Material</h3>
+
+          <p>Notes & Question Banks</p>
+
+        </div>
+
+      </div>
+
+      <button class="open-btn">
+        Open
+      </button>
+
+    </div>
+
+
+    <div class="featured-card">
+
+      <div class="file-info">
+
+        <div class="file-icon">
+          📗
+        </div>
+
+        <div>
+
+          <h3>Important PDFs</h3>
+
+          <p>Free Download</p>
+
+        </div>
+
+      </div>
+
+      <button class="open-btn">
+        Open
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+
+    © 2026 PY Multiverse<br>
+
+    Learn • Practice • Achieve
+
+  </div>
+
+
+  <!-- TELEGRAM -->
+
+  <script>
+
+    const tg = window.Telegram.WebApp;
+
+    tg.ready();
+
+    tg.expand();
+
+  </script>
+
 </body>
 </html>
